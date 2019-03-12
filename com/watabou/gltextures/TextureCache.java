@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012-2014  Oleg Dolya
+ * Copyright (C) 2012-2015 Oleg Dolya
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -44,7 +44,7 @@ public class TextureCache {
 	}
 
 	public static SmartTexture createSolid( int color ) {
-		String key = "1x1:" + color;
+		final String key = "1x1:" + color;
 		
 		if (all.containsKey( key )) {
 			
@@ -64,7 +64,7 @@ public class TextureCache {
 	
 	public static SmartTexture createGradient( int width, int height, int... colors ) {
 		
-		String key = "" + width + "x" + height + ":" + colors;
+		final String key = "" + width + "x" + height + ":" + colors;
 		
 		if (all.containsKey( key )) {
 			

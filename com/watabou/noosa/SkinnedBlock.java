@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012-2014  Oleg Dolya
+ * Copyright (C) 2012-2015 Oleg Dolya
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,6 +29,8 @@ public class SkinnedBlock extends Image {
 	protected float offsetX;
 	protected float offsetY;
 	
+	public boolean autoAdjust = false;
+	
 	public SkinnedBlock( float width, float height, Object tx ) {
 		super( tx );
 		
@@ -50,6 +52,21 @@ public class SkinnedBlock extends Image {
 	
 	@Override
 	protected void updateFrame() {
+		
+		if (autoAdjust) {
+			while (offsetX > texture.width) {
+				offsetX -= texture.width;
+			}
+			while (offsetX < -texture.width) {
+				offsetX += texture.width;
+			}
+			while (offsetY > texture.height) {
+				offsetY -= texture.height;
+			}
+			while (offsetY < -texture.height) {
+				offsetY += texture.height;
+			}
+		}
 		
 		float tw = 1f / texture.width;
 		float th = 1f / texture.height;
